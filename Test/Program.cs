@@ -30,20 +30,21 @@ namespace Test
                     {
                         while (reader.Read())
                         {
-                            Console.WriteLine(((DateTime)reader[0]).Millisecond);
+                            Console.WriteLine(((DateTime) reader[0]).Millisecond);
                         }
                     }
-
-                    var result = connection.QuerySingle<DateTime>("SELECT myDate FROM test");
-                    
-                    Console.WriteLine(result.Millisecond);
-
-                    var dynamicResult = connection.Query("SELECT * FROM test");
-                    var resultAsList = dynamicResult.Cast<IDictionary<string, object>>();
-
-                    Console.WriteLine(((DateTime)resultAsList.Single().Values.Single()).Millisecond);
                 }
+
+                var result = connection.QuerySingle<DateTime>("SELECT myDate FROM test");
+
+                Console.WriteLine(result.Millisecond);
+
+                var dynamicResult = connection.Query("SELECT * FROM test");
+                var resultAsList = dynamicResult.Cast<IDictionary<string, object>>();
+
+                Console.WriteLine(((DateTime) resultAsList.Single().Values.Single()).Millisecond);
             }
+
 
             Console.ReadKey();
         }
